@@ -1,4 +1,4 @@
-Income Expenses API
+Kleenspot API
 
 ## Installation steps
 
