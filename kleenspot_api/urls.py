@@ -1,4 +1,4 @@
-"""incomeexpensesapi URL Configuration
+"""kleenspot_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -22,12 +22,12 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="INCOME EXPENSES API",
-        default_version='v1',
-        description="Test description",
+        title="KLEENSPOT API",
+        default_version='VERSION 1',
+        description="The KleenSpot API provides a robust platform for connecting cleaning service providers with customers in need of cleaning services. Our API is designed to be fast, secure, and easy to integrate, allowing cleaning companies to easily manage their bookings, dispatch cleaners, and track progress through our user-friendly interface. Our API includes endpoints for creating and managing customer accounts, booking and canceling cleaning appointments, managing cleaning schedules and service offerings, and processing payments securely through our integrated payment gateway.We use the latest security protocols to protect user data and ensure privacy, including user authentication and authorization, SSL encryption, and secure storage of sensitive information.Developers can easily integrate with our API using RESTful web services and a clear and concise API documentation that outlines each endpoint and required parameters. Our API is designed to scale and can handle a large volume of requests without compromising on performance or reliability. With the KleenSpot API, cleaning companies can streamline their operations and provide a seamless experience for their customers.",
         terms_of_service="https://www.ourapp.com/policies/terms/",
-        contact=openapi.Contact(email="contact@expenses.local"),
-        license=openapi.License(name="Test License"),
+        contact=openapi.Contact(email="kemoeverlyne@gmail.com"),
+        license=openapi.License(name="Proprietory License"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
