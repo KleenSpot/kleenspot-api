@@ -41,6 +41,8 @@ urlpatterns = [
                                  namespace="social_auth")),
     path('expenses/', include('expenses.urls')),
     path('income/', include('income.urls')),
+    path('services/', include('services.urls')),
+
     path('', schema_view.with_ui('swagger',
                                  cache_timeout=0), name='schema-swagger-ui'),
 
