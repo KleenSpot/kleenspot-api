@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from .baseModel import BaseModel
 
-class CustomUser(AbstractUser):
+class CustomUser(AbstractUser, BaseModel):
     last_login_time = models.DateTimeField(null=True, blank=True)
     last_logout_time = models.DateTimeField(null=True, blank=True)
     inactive_duration = models.DurationField(default=timezone.timedelta)

@@ -1,3 +1,50 @@
 from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from .serializers import CleanerSerializer, ServiceSerializer
+from .models import Cleaner, Service
+from rest_framework import permissions
+from .permissions import IsOwner
 
-# Create your views here.
+
+class CleanerListAPIView(ListCreateAPIView):
+    serializer_class = CleanerSerializer
+    queryset = Cleaner.objects.all()
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
+
+class CleanerDetailAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = CleanerSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    queryset = Cleaner.objects.all()
+    lookup_field = "user"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
+
+class ServiceListAPIView(ListCreateAPIView):
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
+
+class ServiceDetailAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = ServiceSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    queryset = Service.objects.all()
+    lookup_field = "name"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)

@@ -1,23 +1,23 @@
-from rest_framework import serializers
-from .models import Cleaner, CleanerService, Service
+# from rest_framework import serializers
+# from .models import Cleaner, CleanerService, Service
 
 
-class CleanerSerializer(serializers.ModelSerializer):
+# class CleanerSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Cleaner
-        fields = ['user', 'phone', 'address', 'city']
-
-
-class CleanerServiceSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CleanerService
-        fields = ['cleaner', 'service']
+#     class Meta:
+#         model = Cleaner
+#         fields = ['user', 'phone', 'address', 'city']
 
 
-class ServiceSerializer(serializers.ModelSerializer):
+# class CleanerServiceSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Service
-        fields = ['name', 'description']
+#     class Meta:
+#         model = CleanerService
+#         fields = ['cleaner', 'service']
+
+
+# class ServiceSerializer(serializers.ModelSerializer):
+
+#     class Meta:
+#         model = Service
+#         fields = ['name', 'description']
