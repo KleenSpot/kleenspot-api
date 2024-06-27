@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import datetime
 import sys
-import dj_database_url
+import psycopg2
 from django.core.management.utils import get_random_secret_key
 
 
@@ -166,8 +166,16 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('database'),
+            'USER': os.getenv('username'),
+            'PASSWORD': os.getenv('password'),
+            'HOST': os.getenv('host'),
+            'PORT': os.getenv('port', '5432'),
     }
+}
+    
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
