@@ -1,1 +1,1 @@
-web: gunicorn kleenspot-api.wsgi
+web: gunicorn kleenspot_api.wsgi
