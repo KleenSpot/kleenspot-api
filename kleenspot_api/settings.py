@@ -155,18 +155,17 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 
 # If you don’t change these settings and continue with the SQLite DB, your database will be erased after every new deployment. 
 # App Platform doesn’t maintain the disk when re-deploying applications, and your data will be lost.
-if DEVELOPMENT_MODE is True:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        'default': {
+# if DEVELOPMENT_MODE is True:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
+# elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+#     if os.getenv("DATABASE_URL", None) is None:
+#         raise Exception("DATABASE_URL environment variable not defined")
+DATABASES = {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.getenv('database'),
             'USER': os.getenv('username'),
@@ -174,7 +173,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
             'HOST': os.getenv('host'),
             'PORT': os.getenv('port', '5432'),
     }
-}
+# }
     
 
 REST_FRAMEWORK = {
