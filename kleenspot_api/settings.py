@@ -166,6 +166,7 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 #     if os.getenv("DATABASE_URL", None) is None:
 #         raise Exception("DATABASE_URL environment variable not defined")
 DATABASES = {
+    'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.getenv('database'),
             'USER': os.getenv('username'),
@@ -173,7 +174,7 @@ DATABASES = {
             'HOST': os.getenv('host'),
             'PORT': os.getenv('port', '5432'),
     }
-# }
+}
     
 
 REST_FRAMEWORK = {
